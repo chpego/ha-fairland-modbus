@@ -1,0 +1,15 @@
+{
+  "domain": "fairland-modbus",
+  "name": "Fairland (Modbus)",
+  "codeowners": [
+    "@ringods"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/hardes-bv/ha-fairland-modbus",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/hardes-bv/ha-fairland-modbus/issues",
+  "loggers": [
+    "custom_components.fairland-modbus"
+  ],
+  "version": "0.0.1"
+}

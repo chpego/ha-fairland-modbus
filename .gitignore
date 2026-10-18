@@ -1,0 +1,26 @@
+# artifacts
+__pycache__
+.pytest*
+*.egg-info
+*/build/*
+*/dist/*
+
+
+# misc
+# Credentials/tokens (e.g. diagnostics/.env for the probe scripts). Never commit.
+.env
+.coverage
+.vscode
+coverage.xml
+.ruff_cache
+
+
+# Home Assistant configuration
+config/*
+!config/configuration.yaml
+
+
+# Local diagnostics archive: raw user-attached JSONs kept for reference.
+# Never committed (PII + size). Only the README documenting the convention is.
+diagnostics/*
+!diagnostics/README.md
