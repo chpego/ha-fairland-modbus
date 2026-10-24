@@ -7,12 +7,7 @@ from modbus_connection import ModbusSerialParams, ModbusTcpParams
 
 from homeassistant.const import CONF_DEVICE, CONF_HOST, CONF_PORT, CONF_TYPE
 
-from .const import TYPE_SERIAL
-from .vendor.fairland_modbus.heat_pump import (
-    DEFAULT_BAUDRATE,
-    DEFAULT_PARITY,
-    DEFAULT_STOPBITS,
-)
+from .const import SERIAL_BAUDRATE, SERIAL_PARITY, SERIAL_STOPBITS, TYPE_SERIAL
 
 
 def create_modbus_params(
@@ -26,9 +21,9 @@ def create_modbus_params(
     if data[CONF_TYPE] == TYPE_SERIAL:
         return ModbusSerialParams(
             device=data[CONF_DEVICE],
-            baudrate=DEFAULT_BAUDRATE,
-            parity=DEFAULT_PARITY,
-            stopbits=DEFAULT_STOPBITS,
+            baudrate=SERIAL_BAUDRATE,
+            parity=SERIAL_PARITY,
+            stopbits=SERIAL_STOPBITS,
         )
     return ModbusTcpParams(host=data[CONF_HOST], port=data[CONF_PORT])
 
