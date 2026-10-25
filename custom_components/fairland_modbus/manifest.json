@@ -1,10 +1,6 @@
 {
   "domain": "fairland_modbus",
   "name": "Fairland (Modbus)",
-  "categories": [
-    "climate.heat_pumps_air_conditioning",
-    "water.pools_spas"
-  ],
   "codeowners": [
     "@ringods",
     "@chpego"
