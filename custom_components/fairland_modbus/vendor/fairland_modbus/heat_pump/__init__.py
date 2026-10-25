@@ -2,9 +2,6 @@
 
 from .components import Controls, Readings, Settings, Status
 from .const import (
-    DEFAULT_BAUDRATE,
-    DEFAULT_PARITY,
-    DEFAULT_STOPBITS,
     DEFAULT_UNIT_ID,
     FAULT_CODES,
     MESSAGE_SPACING,
@@ -20,9 +17,6 @@ from .const import (
 from .device import POLLED, SERVICE_SETTINGS, FairlandHeatPump
 
 __all__ = [
-    "DEFAULT_BAUDRATE",
-    "DEFAULT_PARITY",
-    "DEFAULT_STOPBITS",
     "DEFAULT_UNIT_ID",
     "FAULT_CODES",
     "MESSAGE_SPACING",

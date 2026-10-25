@@ -1,4 +1,4 @@
-"""Line settings, enums and limits of the MWH216 and MWH298 heat pump boards.
+"""Enums and limits of the MWH216 and MWH298 heat pump boards.
 
 Everything here comes from the Fairland register table for the PC boards
 MWH216 and MWH298, unless a comment says otherwise.
@@ -7,12 +7,9 @@ MWH216 and MWH298, unless a comment says otherwise.
 from __future__ import annotations
 
 from enum import IntEnum, StrEnum
-from typing import Final, Literal
+from typing import Final
 
-# The board's fixed line settings: 9600 baud, 8 data bits, no parity, 1 stop bit.
-DEFAULT_BAUDRATE: Final = 9600
-DEFAULT_PARITY: Final[Literal["N"]] = "N"
-DEFAULT_STOPBITS: Final[Literal[1]] = 1
+# The unit ID the board answers at.
 DEFAULT_UNIT_ID: Final = 1
 
 # The table asks for at least 60 ms between two requests.
