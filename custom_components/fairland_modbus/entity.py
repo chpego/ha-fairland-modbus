@@ -4,6 +4,8 @@ from collections.abc import Awaitable
 from dataclasses import dataclass
 from typing import override
 
+from fairland_modbus import FairlandConnectionError, FairlandError, FairlandRefusedError
+
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers.entity import EntityDescription
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -11,11 +13,6 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN
 from .coordinator import FairlandCoordinator
 from .helpers import error_detail
-from .vendor.fairland_modbus import (
-    FairlandConnectionError,
-    FairlandError,
-    FairlandRefusedError,
-)
 
 
 @dataclass(frozen=True, kw_only=True)

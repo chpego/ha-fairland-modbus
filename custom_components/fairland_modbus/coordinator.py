@@ -3,6 +3,8 @@
 import logging
 from typing import override
 
+from fairland_modbus import FairlandConnectionError, FairlandTimeoutError
+from fairland_modbus.heat_pump import FairlandHeatPump
 from modbus_connection.model import UpdateReport
 
 from homeassistant.config_entries import ConfigEntry
@@ -12,8 +14,6 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 
 from .const import DOMAIN, MANUFACTURER, UPDATE_INTERVAL
 from .helpers import error_detail
-from .vendor.fairland_modbus import FairlandConnectionError, FairlandTimeoutError
-from .vendor.fairland_modbus.heat_pump import FairlandHeatPump
 
 _LOGGER = logging.getLogger(__name__)
 

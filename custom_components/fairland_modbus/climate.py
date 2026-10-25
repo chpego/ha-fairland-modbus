@@ -3,6 +3,9 @@
 from dataclasses import dataclass
 from typing import Any, override
 
+from fairland_modbus import FairlandRefusedError
+from fairland_modbus.heat_pump import Function, WorkingMode
+
 from homeassistant.components.climate import (
     ATTR_HVAC_MODE,
     ClimateEntity,
@@ -19,8 +22,6 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from .const import DOMAIN
 from .coordinator import FairlandConfigEntry, FairlandCoordinator
 from .entity import FairlandEntity, FairlandEntityDescription
-from .vendor.fairland_modbus import FairlandRefusedError
-from .vendor.fairland_modbus.heat_pump import Function, WorkingMode
 
 PARALLEL_UPDATES = 1
 

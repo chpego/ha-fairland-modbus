@@ -13,7 +13,7 @@ valves and swim jets — connecting locally to the devices via Modbus TCP or RTU
 | Inverter pool heat pumps with an MWH216 or MWH298 board (Fairland IPHCR and InverX, and the same board under other brands, such as the Geco GEPAC08) | Climate entity: on and off, heat, cool and automatic, setpoints and working modes. The test package this code comes from ran on a GEPAC08 with an MWH298-V3 board. |
 
 The device support comes from the [fairland-modbus](https://github.com/hardes-bv/python-fairland-modbus)
-library, bundled in `custom_components/fairland_modbus/vendor`.
+library, which Home Assistant installs from PyPI.
 
 ## Installation
 
@@ -48,9 +48,8 @@ uv pip install -r requirements_test.txt
 uv run --no-sync pytest
 ```
 
-To pick up a change in the library, run `scripts/vendor_fairland_modbus.sh`. It copies
-the library from `hardes-bv/python-fairland-modbus` (branch `main` by default) and
-records the commit in `vendor/fairland_modbus/VENDORED_COMMIT`.
+To pick up a new release of the library, update the `fairland-modbus` version in
+`manifest.json` and `requirements_test.txt`.
 
 ## License
 This project is licensed under the Apache v2 License - see the LICENSE file for details.

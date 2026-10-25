@@ -4,6 +4,7 @@ from copy import deepcopy
 from datetime import timedelta
 from typing import Any
 
+from fairland_modbus.heat_pump.testing import HEATING
 from freezegun.api import FrozenDateTimeFactory
 from modbus_connection import (
     IllegalDataAddressError,
@@ -20,9 +21,6 @@ from pytest_homeassistant_custom_component.common import (
 from syrupy.assertion import SnapshotAssertion
 
 from custom_components.fairland_modbus.const import UPDATE_INTERVAL
-from custom_components.fairland_modbus.vendor.fairland_modbus.heat_pump.testing import (
-    HEATING,
-)
 from homeassistant.components.climate import (
     ATTR_HVAC_ACTION,
     ATTR_HVAC_MODE,

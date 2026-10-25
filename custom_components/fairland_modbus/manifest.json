@@ -15,8 +15,11 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/hardes-bv/ha-fairland-modbus/issues",
   "loggers": [
-    "custom_components.fairland_modbus"
+    "custom_components.fairland_modbus",
+    "fairland_modbus"
   ],
-  "requirements": [],
+  "requirements": [
+    "fairland-modbus==0.1.1"
+  ],
   "version": "0.0.1"
 }

@@ -1,5 +1,7 @@
 """Integrate Fairland pool heat pumps over Modbus into Home Assistant."""
 
+from fairland_modbus.heat_pump import FairlandHeatPump
+
 from homeassistant.components.modbus import async_get_unit
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
@@ -7,7 +9,6 @@ from homeassistant.core import HomeAssistant
 from .const import CONF_UNIT_ID
 from .coordinator import FairlandConfigEntry, FairlandCoordinator
 from .helpers import create_modbus_params
-from .vendor.fairland_modbus.heat_pump import FairlandHeatPump
 
 PLATFORMS: list[Platform] = [Platform.CLIMATE]
 

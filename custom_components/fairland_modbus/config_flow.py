@@ -4,6 +4,12 @@ from collections.abc import Mapping
 import logging
 from typing import Any, override
 
+from fairland_modbus import (
+    FairlandConnectionError,
+    FairlandTimeoutError,
+    NotAFairlandDeviceError,
+)
+from fairland_modbus.heat_pump import DEFAULT_UNIT_ID, FairlandHeatPump
 import probatio
 
 from homeassistant.components.modbus import async_get_temporary_unit
@@ -21,12 +27,6 @@ from homeassistant.helpers.selector import (
 
 from .const import CONF_UNIT_ID, DEFAULT_PORT, DOMAIN, TYPE_SERIAL, TYPE_TCP
 from .helpers import create_modbus_params
-from .vendor.fairland_modbus import (
-    FairlandConnectionError,
-    FairlandTimeoutError,
-    NotAFairlandDeviceError,
-)
-from .vendor.fairland_modbus.heat_pump import DEFAULT_UNIT_ID, FairlandHeatPump
 
 _LOGGER = logging.getLogger(__name__)
 

@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
+from fairland_modbus.heat_pump.testing import HEATING, load_image
 from modbus_connection import ModbusTcpParams
 from modbus_connection.mock import MockModbusConnection, MockModbusUnit
 import pytest
@@ -13,10 +14,6 @@ from pytest_homeassistant_custom_component.syrupy import HomeAssistantSnapshotEx
 from syrupy.assertion import SnapshotAssertion
 
 from custom_components.fairland_modbus.const import DOMAIN
-from custom_components.fairland_modbus.vendor.fairland_modbus.heat_pump.testing import (
-    HEATING,
-    load_image,
-)
 from homeassistant.core import HomeAssistant
 
 from . import MOCK_ENTRY_ID, MOCK_TCP_DATA, MOCK_TITLE
@@ -37,7 +34,7 @@ def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
 def no_working_mode_settle() -> Generator[None]:
     """Read the working mode back without the pause a real board needs."""
     with patch(
-        "custom_components.fairland_modbus.vendor.fairland_modbus.heat_pump.device.WORKING_MODE_SETTLE",
+        "fairland_modbus.heat_pump.device.WORKING_MODE_SETTLE",
         0,
     ):
         yield
