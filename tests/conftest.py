@@ -9,25 +9,12 @@ from fairland_modbus.heat_pump.testing import HEATING, load_image
 from modbus_connection import ModbusTcpParams
 from modbus_connection.mock import MockModbusConnection, MockModbusUnit
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.syrupy import HomeAssistantSnapshotExtension
-from syrupy.assertion import SnapshotAssertion
+from pytest_homeassistant.common import MockConfigEntry
 
 from custom_components.fairland_modbus.const import DOMAIN
 from homeassistant.core import HomeAssistant
 
 from . import MOCK_ENTRY_ID, MOCK_TCP_DATA, MOCK_TITLE
-
-
-@pytest.fixture(autouse=True)
-def auto_enable_custom_integrations(enable_custom_integrations: None) -> None:
-    """Let Home Assistant load the integration from custom_components."""
-
-
-@pytest.fixture
-def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
-    """Serialize snapshots the way Home Assistant does."""
-    return snapshot.use_extension(HomeAssistantSnapshotExtension)
 
 
 @pytest.fixture(autouse=True)

@@ -77,7 +77,7 @@ class FairlandClimate(FairlandEntity, ClimateEntity):
         | ClimateEntityFeature.TURN_OFF
     )
     _attr_target_temperature_step = 1
-    _attr_temperature_unit = UnitOfTemperature.CELSIUS
+    _attr_native_temperature_unit = UnitOfTemperature.CELSIUS
 
     def __init__(
         self,
@@ -94,7 +94,7 @@ class FairlandClimate(FairlandEntity, ClimateEntity):
 
     @property
     @override
-    def current_temperature(self) -> float | None:
+    def native_current_temperature(self) -> float | None:
         """The water entering the heat pump: the pool temperature."""
         if not self._fresh("readings"):
             return None
@@ -102,7 +102,7 @@ class FairlandClimate(FairlandEntity, ClimateEntity):
 
     @property
     @override
-    def target_temperature(self) -> float | None:
+    def native_target_temperature(self) -> float | None:
         """The setpoint of the current function."""
         return self._heat_pump.target_temperature
 

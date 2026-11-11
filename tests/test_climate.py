@@ -13,7 +13,7 @@ from modbus_connection import (
 )
 from modbus_connection.mock import MockModbusUnit, WriteEvent
 import pytest
-from pytest_homeassistant_custom_component.common import (
+from pytest_homeassistant.common import (
     MockConfigEntry,
     async_fire_time_changed,
     snapshot_platform,
