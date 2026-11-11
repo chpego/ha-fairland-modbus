@@ -43,25 +43,15 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers import entity_registry as er
 
-from . import heating_image
+from . import COIL, FC06, heating_image
 
 CLIMATE = "climate.fairland_heat_pump"
-COIL = 0x05
-FC06 = 0x06
 
 
 @pytest.fixture
 def platforms() -> list[Platform]:
     """Set up only the climate platform."""
     return [Platform.CLIMATE]
-
-
-@pytest.fixture
-def writes(mock_unit: MockModbusUnit) -> list[WriteEvent]:
-    """The writes the mock heat pump receives."""
-    events: list[WriteEvent] = []
-    mock_unit.on_write(events.append)
-    return events
 
 
 @pytest.mark.parametrize(

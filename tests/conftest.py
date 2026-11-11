@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from fairland_modbus.heat_pump.testing import HEATING, load_image
 from modbus_connection import ModbusTcpParams
-from modbus_connection.mock import MockModbusConnection, MockModbusUnit
+from modbus_connection.mock import MockModbusConnection, MockModbusUnit, WriteEvent
 import pytest
 from pytest_homeassistant.common import MockConfigEntry
 
@@ -64,6 +64,14 @@ def mock_connection(register_image: dict[str, dict[int, Any]]) -> MockModbusConn
 def mock_unit(mock_connection: MockModbusConnection) -> MockModbusUnit:
     """The mock heat pump at address 1."""
     return mock_connection.for_unit(1)
+
+
+@pytest.fixture
+def writes(mock_unit: MockModbusUnit) -> list[WriteEvent]:
+    """The writes the mock heat pump receives."""
+    events: list[WriteEvent] = []
+    mock_unit.on_write(events.append)
+    return events
 
 
 @pytest.fixture

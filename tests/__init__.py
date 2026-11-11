@@ -8,6 +8,10 @@ from fairland_modbus.heat_pump.testing import HEATING
 from custom_components.fairland_modbus.const import CONF_UNIT_ID, TYPE_SERIAL, TYPE_TCP
 from homeassistant.const import CONF_DEVICE, CONF_HOST, CONF_PORT, CONF_TYPE
 
+# The function codes the mock heat pump records for single writes.
+COIL = 0x05
+FC06 = 0x06
+
 MOCK_ENTRY_ID = "01JFAIRLANDHEATPUMP0000000"
 MOCK_TITLE = "Fairland heat pump"
 
