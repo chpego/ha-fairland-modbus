@@ -45,6 +45,26 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "compressor": {
+        "name": "Compressor"
+      },
+      "defrosting": {
+        "name": "Defrosting"
+      },
+      "malfunction": {
+        "name": "Malfunction"
+      },
+      "no_water_flow": {
+        "name": "No water flow"
+      },
+      "remote_switch": {
+        "name": "Remote switch"
+      },
+      "water_flow": {
+        "name": "Water flow"
+      }
+    },
     "climate": {
       "heat_pump": {
         "state_attributes": {
