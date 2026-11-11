@@ -38,6 +38,7 @@ from homeassistant.const import (
     SERVICE_TURN_OFF,
     SERVICE_TURN_ON,
     STATE_UNKNOWN,
+    Platform,
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
@@ -54,6 +55,12 @@ def _image(**changes: dict[int, Any]) -> dict[str, dict[int, Any]]:
     for space, values in changes.items():
         image[space].update(values)
     return image
+
+
+@pytest.fixture
+def platforms() -> list[Platform]:
+    """Set up only the climate platform."""
+    return [Platform.CLIMATE]
 
 
 @pytest.fixture
