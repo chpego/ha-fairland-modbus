@@ -1,0 +1,62 @@
+# serializer version: 1
+# name: test_entities[select.fairland_heat_pump_pump_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'continuous',
+        'water_temperature',
+        'time_and_water_temperature',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': None,
+    'device_class': None,
+    'device_id': <DeviceEntry identifiers=[('fairland_modbus', '01JFAIRLANDHEATPUMP0000000')]>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.fairland_heat_pump_pump_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Pump mode',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Pump mode',
+    'platform': 'fairland_modbus',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'pump_mode',
+    'unique_id': '01JFAIRLANDHEATPUMP0000000_pump_mode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select.fairland_heat_pump_pump_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Fairland heat pump Pump mode',
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'continuous',
+        'water_temperature',
+        'time_and_water_temperature',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.fairland_heat_pump_pump_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'continuous',
+  })
+# ---

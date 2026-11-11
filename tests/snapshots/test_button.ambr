@@ -1,0 +1,51 @@
+# serializer version: 1
+# name: test_entities[button.fairland_heat_pump_start_defrost-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': None,
+    'device_class': None,
+    'device_id': <DeviceEntry identifiers=[('fairland_modbus', '01JFAIRLANDHEATPUMP0000000')]>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.fairland_heat_pump_start_defrost',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Start defrost',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Start defrost',
+    'platform': 'fairland_modbus',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'start_defrost',
+    'unique_id': '01JFAIRLANDHEATPUMP0000000_start_defrost',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button.fairland_heat_pump_start_defrost-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Fairland heat pump Start defrost',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.fairland_heat_pump_start_defrost',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---

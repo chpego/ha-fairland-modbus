@@ -10,7 +10,14 @@ from .const import CONF_UNIT_ID
 from .coordinator import FairlandConfigEntry, FairlandCoordinator
 from .helpers import create_modbus_params
 
-PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.CLIMATE, Platform.SENSOR]
+PLATFORMS: list[Platform] = [
+    Platform.BINARY_SENSOR,
+    Platform.BUTTON,
+    Platform.CLIMATE,
+    Platform.NUMBER,
+    Platform.SELECT,
+    Platform.SENSOR,
+]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: FairlandConfigEntry) -> bool:

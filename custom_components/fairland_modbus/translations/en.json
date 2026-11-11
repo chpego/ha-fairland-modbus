@@ -65,6 +65,11 @@
         "name": "Water flow"
       }
     },
+    "button": {
+      "start_defrost": {
+        "name": "Start defrost"
+      }
+    },
     "climate": {
       "heat_pump": {
         "state_attributes": {
@@ -76,6 +81,33 @@
               "turbo": "Turbo"
             }
           }
+        }
+      }
+    },
+    "number": {
+      "defrost_end_temperature": {
+        "name": "Defrost end temperature"
+      },
+      "defrost_interval": {
+        "name": "Compressor run time before defrost"
+      },
+      "defrost_max_duration": {
+        "name": "Maximum defrost duration"
+      },
+      "defrost_start_temperature": {
+        "name": "Defrost start temperature"
+      },
+      "pump_run_time": {
+        "name": "Pump sampling time"
+      }
+    },
+    "select": {
+      "pump_mode": {
+        "name": "Pump mode",
+        "state": {
+          "continuous": "Continuous",
+          "time_and_water_temperature": "Time and water temperature",
+          "water_temperature": "Water temperature"
         }
       }
     },
