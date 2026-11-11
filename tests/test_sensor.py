@@ -1,8 +1,6 @@
 """Tests for the Fairland (Modbus) sensors."""
 
-from copy import deepcopy
 from datetime import timedelta
-from typing import Any
 
 from fairland_modbus.heat_pump.testing import HEATING
 from freezegun.api import FrozenDateTimeFactory
@@ -21,16 +19,10 @@ from homeassistant.const import STATE_UNAVAILABLE, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 
+from . import heating_image
+
 FAULT = "sensor.fairland_heat_pump_fault"
 INLET = "sensor.fairland_heat_pump_inlet_water_temperature"
-
-
-def _image(**changes: dict[int, Any]) -> dict[str, dict[int, Any]]:
-    """The heating image with some registers changed."""
-    image = deepcopy(HEATING)
-    for space, values in changes.items():
-        image[space].update(values)
-    return image
 
 
 @pytest.fixture
@@ -77,10 +69,12 @@ async def test_enabled_by_default(
     ("register_image", "state"),
     [
         pytest.param(HEATING, "none", id="no_fault"),
-        pytest.param(_image(discrete={51: True}), "e3", id="no_water_flow"),
+        pytest.param(heating_image(discrete={51: True}), "e3", id="no_water_flow"),
         # Several codes at once: the first one the table lists.
-        pytest.param(_image(discrete={51: True, 65: True}), "e3", id="two_codes"),
-        pytest.param(_image(discrete={91: True}), "fb", id="last_code"),
+        pytest.param(
+            heating_image(discrete={51: True, 65: True}), "e3", id="two_codes"
+        ),
+        pytest.param(heating_image(discrete={91: True}), "fb", id="last_code"),
     ],
     indirect=["register_image"],
 )

@@ -1,6 +1,5 @@
 """Tests for the Fairland (Modbus) climate entity."""
 
-from copy import deepcopy
 from datetime import timedelta
 from typing import Any
 
@@ -44,17 +43,11 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers import entity_registry as er
 
+from . import heating_image
+
 CLIMATE = "climate.fairland_heat_pump"
 COIL = 0x05
 FC06 = 0x06
-
-
-def _image(**changes: dict[int, Any]) -> dict[str, dict[int, Any]]:
-    """The heating image with some registers changed."""
-    image = deepcopy(HEATING)
-    for space, values in changes.items():
-        image[space].update(values)
-    return image
 
 
 @pytest.fixture
@@ -93,7 +86,7 @@ def writes(mock_unit: MockModbusUnit) -> list[WriteEvent]:
             id="hvac_cool_while_on",
         ),
         pytest.param(
-            _image(coil={0: False}),
+            heating_image(coil={0: False}),
             CLIMATE_DOMAIN,
             SERVICE_SET_HVAC_MODE,
             CLIMATE,
@@ -102,7 +95,7 @@ def writes(mock_unit: MockModbusUnit) -> list[WriteEvent]:
             id="hvac_heat_while_off",
         ),
         pytest.param(
-            _image(coil={0: False}),
+            heating_image(coil={0: False}),
             CLIMATE_DOMAIN,
             SERVICE_SET_HVAC_MODE,
             CLIMATE,
@@ -144,7 +137,7 @@ def writes(mock_unit: MockModbusUnit) -> list[WriteEvent]:
             id="super_silence",
         ),
         pytest.param(
-            _image(coil={0: False}),
+            heating_image(coil={0: False}),
             CLIMATE_DOMAIN,
             SERVICE_TURN_ON,
             CLIMATE,
@@ -277,13 +270,17 @@ async def test_climate_follows_the_heat_pump(
     ("register_image", "action"),
     [
         pytest.param(HEATING, HVACAction.HEATING, id="heating"),
-        pytest.param(_image(coil={0: False}), HVACAction.OFF, id="off"),
-        pytest.param(_image(discrete={1: True}), HVACAction.DEFROSTING, id="defrost"),
-        pytest.param(_image(discrete={17: False}), HVACAction.IDLE, id="idle"),
-        pytest.param(_image(holding={0: 2}), HVACAction.COOLING, id="cooling"),
-        pytest.param(_image(holding={0: 0}), HVACAction.HEATING, id="auto_heating"),
+        pytest.param(heating_image(coil={0: False}), HVACAction.OFF, id="off"),
         pytest.param(
-            _image(holding={0: 0}, input={4: 108}),
+            heating_image(discrete={1: True}), HVACAction.DEFROSTING, id="defrost"
+        ),
+        pytest.param(heating_image(discrete={17: False}), HVACAction.IDLE, id="idle"),
+        pytest.param(heating_image(holding={0: 2}), HVACAction.COOLING, id="cooling"),
+        pytest.param(
+            heating_image(holding={0: 0}), HVACAction.HEATING, id="auto_heating"
+        ),
+        pytest.param(
+            heating_image(holding={0: 0}, input={4: 108}),
             HVACAction.COOLING,
             id="auto_cooling",
         ),
@@ -308,7 +305,9 @@ async def test_hvac_action_without_status(
     assert hass.states.get(CLIMATE).attributes.get(ATTR_HVAC_ACTION) is None
 
 
-@pytest.mark.parametrize("register_image", [_image(holding={0: 0})], indirect=True)
+@pytest.mark.parametrize(
+    "register_image", [heating_image(holding={0: 0})], indirect=True
+)
 @pytest.mark.usefixtures("init_integration")
 async def test_auto_action_without_water_temperatures(
     hass: HomeAssistant, mock_unit: MockModbusUnit, freezer: FrozenDateTimeFactory
@@ -324,7 +323,7 @@ async def test_auto_action_without_water_temperatures(
 
 
 @pytest.mark.parametrize(
-    "register_image", [_image(holding={0: 9, 1: 7})], indirect=True
+    "register_image", [heating_image(holding={0: 9, 1: 7})], indirect=True
 )
 @pytest.mark.usefixtures("init_integration")
 async def test_unknown_function_and_mode(hass: HomeAssistant) -> None:
