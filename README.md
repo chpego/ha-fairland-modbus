@@ -20,7 +20,7 @@ library, which Home Assistant installs from PyPI.
 
 ## Installation
 
-Home Assistant 2026.10.2 or later: the test package this code comes from ran on 2026.10.2, and the tests run on 2026.10.3.
+Home Assistant 2026.11.0 or later: the climate entity uses the temperature properties that release introduced. The tests run on 2026.11.1.
 
 1. In HACS, open the menu, select **Custom repositories**, and add
    `https://github.com/hardes-bv/ha-fairland-modbus` as an **Integration**.
